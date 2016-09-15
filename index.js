@@ -38,10 +38,10 @@ app.get('/', function(req, res) {
                     img.height = desiredHeight;
                 }
             }
-            document.addEventListener('DOMContentLoaded', function() {
+            window.onload = function() {
               var image = document.querySelector('#meme');
               fixImgSize(image);
-            });
+            }
             </script>
             <style>
               body {
