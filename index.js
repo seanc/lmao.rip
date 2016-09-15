@@ -23,21 +23,25 @@ app.get('/', function(req, res) {
             <meta http-equiv="X-UA-Compatible" content="ie=edge" />
             <title>lmao.rip</title>
             <script>
-              function fixImgSize(img){
-                var imgNRatio = img.naturalWidth/img.naturalHeight;
-                var desiredWidth = window.innerWidth*0.8;
-                var desiredHeight = window.innerHeight*0.8;
-                if(desiredWidth/desiredHeight>imgNRatio){
-                  delete img.width;
-                  img.height=desiredHeight;
-                }else if(desiredWidth/desiredHeight<imgNRatio){
-                  delete img.height;
-                  img.width=desiredWidth;
-                }else{
-                  img.width=desiredWidth;
-                  img.height=desiredHeight;
+            function fixImgSize(img) {
+                var imgNRatio = img.naturalWidth / img.naturalHeight;
+                var desiredWidth = window.innerWidth * 0.8;
+                var desiredHeight = window.innerHeight * 0.8;
+                if (desiredWidth / desiredHeight > imgNRatio) {
+                    delete img.width;
+                    img.height = desiredHeight;
+                } else if (desiredWidth / desiredHeight < imgNRatio) {
+                    delete img.height;
+                    img.width = desiredWidth;
+                } else {
+                    img.width = desiredWidth;
+                    img.height = desiredHeight;
                 }
-              }
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+              var image = document.querySelector('#meme');
+              fixImgSize(image);
+            });
             </script>
             <style>
               body {
@@ -62,7 +66,7 @@ app.get('/', function(req, res) {
             </style>
           </head>
           <body>
-            <img src="${image}" onload="fixImgSize(this);"/>
+            <img src="${image}" id="meme"/>
 
             <p class="footer">Powered by Giphy</p>
           </body>
