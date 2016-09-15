@@ -24,11 +24,18 @@ app.get('/', function(req, res) {
             <title>lmao.rip</title>
             <script>
               function fixImgSize(img){
-                if(window.innerWidth-200<img.naturalWidth||window.innerHeight-100<img.naturalHeight){
-                    if(window.innerWidth-200<img.naturalWidth) img.width=window.innerWidth-200;
-                    else img.height=window.innerHeight-100;
+                var imgNRatio = img.naturalWidth/img.naturalHeight;
+                var desiredWidth = window.innerWidth*0.8;
+                var desiredHeight = window.innerHeight*0.8;
+                if(desiredWidth/desiredHeight>imgNRatio){
+                  delete img.width;
+                  img.height=desiredHeight;
+                }else if(desiredWidth/desiredHeight<imgNRatio){
+                  delete img.height;
+                  img.width=desiredWidth;
                 }else{
-                    img.width=img.naturalWidth;
+                  img.width=desiredWidth;
+                  img.height=desiredHeight;
                 }
               }
             </script>
