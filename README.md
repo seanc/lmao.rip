@@ -1,4 +1,4 @@
-# lmao.rip [![Build Status](https://travis-ci.org/seanc/lmao.rip.svg?branch=master)](https://travis-ci.org/seanc/lmao.rip)
+# lmao.rip
 
 > Generate random lmao gifs
 
