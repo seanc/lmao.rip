@@ -22,6 +22,16 @@ app.get('/', function(req, res) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta http-equiv="X-UA-Compatible" content="ie=edge" />
             <title>lmao.rip</title>
+            <script>
+              function fixImgSize(img){
+                if(window.innerWidth-200<img.naturalWidth||window.innerHeight-100<img.naturalHeight){
+                    if(window.innerWidth-200<img.naturalWidth) img.width=window.innerWidth-200;
+                    else img.height=window.innerHeight-100;
+                }else{
+                    img.width=img.naturalWidth;
+                }
+              }
+            </script>
             <style>
               body {
                 background-color: #000;
@@ -45,7 +55,7 @@ app.get('/', function(req, res) {
             </style>
           </head>
           <body>
-            <img src="${image}"/>
+            <img src="${image}" onload="fixImgSize(this);"/>
 
             <p class="footer">Powered by Giphy</p>
           </body>
